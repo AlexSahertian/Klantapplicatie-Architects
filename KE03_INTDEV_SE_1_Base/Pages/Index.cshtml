@@ -1,0 +1,479 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center min-vh-75">
+
+            <!-- LINKERKANT -->
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-success mb-3 px-3 py-2 hero-badge">
+
+                    Matrix Store Official
+
+                </span>
+
+                <h1 class="hero-title">
+
+                    Exclusieve Matrix technologie
+                    voor professionals.
+
+                </h1>
+
+                <p class="hero-text">
+
+                    Ontdek hoogwaardige Matrix producten,
+                    onderdelen en technische apparatuur.
+                    Veilig bestellen, snelle levering en
+                    direct beschikbaar vanuit Matrix Store.
+
+                </p>
+
+                <!-- USP'S -->
+
+                <div class="hero-usps mt-4">
+
+                    <div class="hero-usp">
+                        🟢 Premium Matrix assortiment
+                    </div>
+
+                    <div class="hero-usp">
+                        ⚙️ Producten en onderdelen op één plek
+                    </div>
+
+                    <div class="hero-usp">
+                        🛒 Bestel eenvoudig via de webshop
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+
+                <div class="d-flex flex-wrap gap-3 mt-5">
+
+                    <a asp-page="/Products/Index"
+                       class="btn btn-success btn-lg px-4 py-3">
+
+                        Bekijk producten
+
+                    </a>
+
+                    <a asp-page="/Parts/Index"
+                       class="btn btn-outline-light btn-lg px-4 py-3">
+
+                        Bekijk onderdelen
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- RECHTERKANT -->
+
+            <div class="col-lg-6 mt-5 mt-lg-0">
+
+                <div class="hero-card">
+
+                    <!-- TOP -->
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <div>
+
+                            <span class="text-success fw-bold">
+                                BESTSELLER
+                            </span>
+
+                            <h3 class="fw-bold mt-2">
+                                Nebuchadnezzar
+                            </h3>
+
+                        </div>
+
+                        <div class="hero-product-icon">
+
+                            🚀
+
+                        </div>
+
+                    </div>
+
+                    <!-- BESCHRIJVING -->
+
+                    <p class="mb-4">
+
+                        Het iconische hovercraft schip van Morpheus.
+                        Een essentieel onderdeel van de Matrix vloot.
+
+                    </p>
+
+                    <!-- PRIJS -->
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <span class="text-muted">
+                                Vanaf
+                            </span>
+
+                            <h2 class="fw-bold text-success mb-0">
+
+                                €10.000
+
+                            </h2>
+
+                        </div>
+
+                        <a asp-page="/Products/Index"
+                           class="btn btn-success">
+
+                            Bekijk product
+
+                        </a>
+
+                    </div>
+
+                    <!-- STATS -->
+
+                    <div class="row text-center mt-5">
+
+                        <div class="col-4">
+
+                            <h4 class="fw-bold">
+                                3+
+                            </h4>
+
+                            <span>
+                                Producten
+                            </span>
+
+                        </div>
+
+                        <div class="col-4">
+
+                            <h4 class="fw-bold">
+                                4+
+                            </h4>
+
+                            <span>
+                                Onderdelen
+                            </span>
+
+                        </div>
+
+                        <div class="col-4">
+
+                            <h4 class="fw-bold">
+                                24/7
+                            </h4>
+
+                            <span>
+                                Support
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container py-5">
+
+    <div class="section-header text-center mb-5">
+
+        <span class="section-label">
+            Matrix Store
+        </span>
+
+        <h2 class="fw-bold">
+            Alles voor jouw Matrix-uitrusting
+        </h2>
+
+        <p>
+            Ontdek producten, onderdelen en apparatuur voor onderhoud,
+            uitbreiding en professioneel gebruik.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🖥️
+                </div>
+
+                <h4>
+                    Matrix technologie
+                </h4>
+
+                <p>
+                    Bestel exclusieve Matrix-producten zoals terminals,
+                    stoelen, schepen en geavanceerde apparatuur.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚙️
+                </div>
+
+                <h4>
+                    Onderdelen & onderhoud
+                </h4>
+
+                <p>
+                    Vind technische onderdelen voor reparatie,
+                    vervanging en uitbreiding van Matrix-systemen.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📦
+                </div>
+
+                <h4>
+                    Simpel bestelproces
+                </h4>
+
+                <p>
+                    Voeg producten toe aan je winkelwagen,
+                    vul je gegevens in en rond je bestelling overzichtelijk af.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container pb-5">
+
+    <div class="row g-4 align-items-stretch">
+
+        <!-- POPULAIRE PRODUCTEN -->
+
+        <div class="col-lg-8">
+
+            <div class="content-panel h-100">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div>
+
+                        <span class="section-label">
+                            Populaire producten
+                        </span>
+
+                        <h2 class="fw-bold mb-0">
+                            Meest bekeken producten
+                        </h2>
+
+                    </div>
+
+                    <a asp-page="/Products/Index"
+                       class="btn btn-outline-dark">
+
+                        Bekijk alles
+
+                    </a>
+
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- PRODUCT 1 -->
+
+                    <div class="col-md-4">
+
+                        <div class="mini-product-card">
+
+                            <div class="mini-product-icon">
+                                🚀
+                            </div>
+
+                            <h5 class="fw-bold mt-3">
+                                Nebuchadnezzar
+                            </h5>
+
+                            <p class="text-muted">
+
+                                Iconisch hovercraft schip van Morpheus.
+
+                            </p>
+
+                            <h5 class="text-success fw-bold">
+
+                                €10.000
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PRODUCT 2 -->
+
+                    <div class="col-md-4">
+
+                        <div class="mini-product-card">
+
+                            <div class="mini-product-icon">
+                                💺
+                            </div>
+
+                            <h5 class="fw-bold mt-3">
+                                Jack-in Chair
+                            </h5>
+
+                            <p class="text-muted">
+
+                                Verbind gebruikers direct met de Matrix.
+
+                            </p>
+
+                            <h5 class="text-success fw-bold">
+
+                                €500
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PRODUCT 3 -->
+
+                    <div class="col-md-4">
+
+                        <div class="mini-product-card">
+
+                            <div class="mini-product-icon">
+                                ⚡
+                            </div>
+
+                            <h5 class="fw-bold mt-3">
+                                EMP Device
+                            </h5>
+
+                            <p class="text-muted">
+
+                                Schakel vijandige machines tijdelijk uit.
+
+                            </p>
+
+                            <h5 class="text-success fw-bold">
+
+                                €129
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CTA RECHTS -->
+
+        <div class="col-lg-4">
+
+            <div class="cta-panel h-100 d-flex flex-column justify-content-center">
+
+                <span class="section-label mb-3">
+                    Matrix Store
+                </span>
+
+                <h2 class="fw-bold">
+
+                    Start vandaag nog
+                    met bestellen
+
+                </h2>
+
+                <p class="mt-3 text-muted">
+
+                    Bekijk ons assortiment van Matrix producten
+                    en onderdelen en plaats eenvoudig je bestelling
+                    via onze moderne webshop.
+
+                </p>
+
+                <!-- EXTRA INFO -->
+
+                <div class="cta-benefits mt-4">
+
+                    <div class="cta-benefit">
+
+                        ✅ Snelle levering
+
+                    </div>
+
+                    <div class="cta-benefit">
+
+                        🔒 Veilig betalen
+
+                    </div>
+
+                    <div class="cta-benefit">
+
+                        🚚 Gratis verzending vanaf €100
+
+                    </div>
+
+                </div>
+
+                <a asp-page="/Products/Index"
+                   class="btn btn-success btn-lg w-100 mt-5">
+
+                    Naar producten
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

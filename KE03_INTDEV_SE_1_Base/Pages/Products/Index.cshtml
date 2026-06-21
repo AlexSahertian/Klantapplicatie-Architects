@@ -1,0 +1,89 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Producten";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="section-label">Webshop</span>
+
+                <h1 class="fw-bold display-5">
+                    Matrix producten
+                </h1>
+
+                <p class="lead">
+                    Kies uit exclusieve Matrix-technologie en voeg producten direct toe aan je winkelwagen.
+                </p>
+            </div>
+
+            <div class="col-lg-4 text-lg-end">
+                <a asp-page="/Cart/Index" class="btn btn-success btn-lg">
+                    Bekijk winkelwagen
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="shop-toolbar mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Assortiment</h2>
+            <p class="text-muted mb-0">
+                @Model.Products.Count producten beschikbaar
+            </p>
+        </div>
+
+        <div class="toolbar-chip">
+            Veilig bestellen
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="shop-card h-100">
+                    <div class="shop-card-image">
+                        <span>📦</span>
+                    </div>
+
+                    <div class="shop-card-body">
+                        <span class="product-badge">
+                            Matrix technologie
+                        </span>
+
+                        <h3 class="fw-bold mt-3">
+                            @product.Name
+                        </h3>
+
+                        <p class="text-muted product-description">
+                            @product.Description
+                        </p>
+
+                        <div class="price-row">
+                            <div>
+                                <span class="small text-muted">Prijs</span>
+                                <h4 class="fw-bold text-success mb-0">
+                                    € @product.Price
+                                </h4>
+                            </div>
+                        </div>
+
+                        <form method="post" class="mt-4">
+                            <input type="hidden" name="productId" value="@product.Id" />
+
+                            <button type="submit" class="btn btn-success w-100 btn-lg">
+                                Toevoegen aan winkelwagen
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

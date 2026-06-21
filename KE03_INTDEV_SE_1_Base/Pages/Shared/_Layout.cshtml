@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Matrix Store</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/KE03_INTDEV_SE_1_Base.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark matrix-navbar sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-page="/Index">
+                    Matrix Store
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Products/Index">Producten</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Parts/Index">Onderdelen</a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-success nav-cart-btn" asp-page="/Cart/Index">
+                                Winkelwagen
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="matrix-footer mt-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h4 class="fw-bold">Matrix Store</h4>
+                    <p>
+                        Een moderne bestelapplicatie gebouwd met ASP.NET Core Razor Pages.
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Navigatie</h6>
+                    <p class="mb-1"><a asp-page="/Products/Index">Producten</a></p>
+                    <p class="mb-1"><a asp-page="/Parts/Index">Onderdelen</a></p>
+                    <p class="mb-1"><a asp-page="/Cart/Index">Winkelwagen</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Project</h6>
+                    <p class="mb-1">Interface Development</p>
+                    <p class="mb-1">Razor Pages</p>
+                    <p class="mb-1">Data Access Layer</p>
+                </div>
+            </div>
+
+            <hr />
+
+            <p class="mb-0 small">
+                &copy; 2025 Matrix Store - Klant bestel applicatie
+            </p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

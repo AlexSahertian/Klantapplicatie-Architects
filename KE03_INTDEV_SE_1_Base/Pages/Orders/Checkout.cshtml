@@ -1,0 +1,189 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Orders.CheckoutModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<section class="page-hero">
+    <div class="container">
+
+        <h1 class="fw-bold display-5">
+            Afrekenen
+        </h1>
+
+        <p class="lead">
+            Vul je gegevens in om je bestelling af te ronden.
+        </p>
+
+    </div>
+</section>
+
+<section class="container py-5">
+
+    <form method="post">
+
+        <div class="row g-4">
+
+            <!-- FORMULIER -->
+
+            <div class="col-lg-8">
+
+                <div class="content-panel">
+
+                    <h2 class="fw-bold mb-4">
+                        Persoonlijke gegevens
+                    </h2>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Volledige naam
+                            </label>
+
+                            <input asp-for="FullName"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="FullName"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Emailadres
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Telefoonnummer
+                            </label>
+
+                            <input asp-for="PhoneNumber"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="PhoneNumber"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Adres
+                            </label>
+
+                            <input asp-for="Address"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="Address"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Postcode
+                            </label>
+
+                            <input asp-for="PostalCode"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="PostalCode"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Woonplaats
+                            </label>
+
+                            <input asp-for="City"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="City"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- OVERZICHT -->
+
+            <div class="col-lg-4">
+
+                <div class="checkout-card">
+
+                    <h3 class="fw-bold mb-4">
+                        Besteloverzicht
+                    </h3>
+
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <div class="summary-row">
+
+                            <span>
+                                @item.ProductName
+                                (x@item.Quantity)
+                            </span>
+
+                            <strong>
+                                € @(item.Price* item.Quantity)
+                            </strong>
+
+                        </div>
+                    }
+
+                    <hr />
+
+                    <div class="summary-row">
+
+                        <span class="fw-bold">
+                            Totaal
+                        </span>
+
+                        <strong class="fs-5">
+                            € @Model.Total
+                        </strong>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-success btn-lg w-100 mt-4">
+
+                        Bestelling plaatsen
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,115 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Cart.IndexModel
+
+@{
+    ViewData["Title"] = "Winkelwagen";
+}
+
+<section class="page-hero cart-hero">
+    <div class="container">
+        <h1 class="fw-bold display-5">Winkelwagen</h1>
+        <p class="lead">
+            Controleer je producten voordat je de bestelling plaatst.
+        </p>
+    </div>
+</section>
+
+<section class="container py-5">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success shadow-sm">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (Model.CartItems.Count == 0)
+    {
+        <div class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+
+            <h2 class="fw-bold">
+                Je winkelwagen is leeg
+            </h2>
+
+            <p>
+                Voeg producten toe om een bestelling te kunnen plaatsen.
+            </p>
+
+            <a asp-page="/Products/Index" class="btn btn-success btn-lg">
+                Bekijk producten
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="content-panel">
+                    <div class="table-responsive">
+                        <table class="table align-middle cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Prijs</th>
+                                    <th>Aantal</th>
+                                    <th>Subtotaal</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td class="fw-semibold">
+                                            @item.ProductName
+                                        </td>
+
+                                        <td>
+                                            € @item.Price
+                                        </td>
+
+                                        <td>
+                                            <span class="quantity-pill">
+                                                @item.Quantity
+                                            </span>
+                                        </td>
+
+                                        <td class="fw-bold">
+                                            € @(item.Price* item.Quantity)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <a asp-page="/Products/Index" class="btn btn-outline-dark">
+                        Verder winkelen
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="checkout-card">
+                    <h3 class="fw-bold">Besteloverzicht</h3>
+
+                    <div class="summary-row">
+                        <span>Aantal producten</span>
+                        <strong>@Model.CartItems.Sum(i => i.Quantity)</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Totaal</span>
+                        <strong>€ @Model.Total</strong>
+                    </div>
+
+                    <hr />
+
+                    <a asp-page="/Orders/Checkout" class="btn btn-success btn-lg w-100">
+                        Bestelling plaatsen
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</section>
