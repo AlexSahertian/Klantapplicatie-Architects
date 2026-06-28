@@ -11,5 +11,6 @@
         public Customer Customer { get; set; } = null!;
 
         public ICollection<Product> Products { get; } = new List<Product>();
+        public OrderStatus Status {  get; set; }
     }
 }

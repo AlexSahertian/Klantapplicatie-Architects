@@ -1,0 +1,27 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Orders.OrderStatusModel
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<section class="page-hero">
+    <div class="container">
+
+        <h1 class="fw-bold display-5">
+            Order #@Model.Order?.Id
+        </h1>
+
+    </div>
+</section>
+
+<section class="container py-5 text-center">
+    <div class="content-panel p-5">
+        <h1 class="fw-bold mt-4">
+            Status
+        </h1>
+        <p class="lead mt-3">
+            @Model.GetOrderStatus()
+        </p>
+    </div>
+</section>
