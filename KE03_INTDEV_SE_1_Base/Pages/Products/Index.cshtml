@@ -49,7 +49,14 @@
             <div class="col-lg-4 col-md-6">
                 <div class="shop-card h-100">
                     <div class="shop-card-image">
-                        <span>📦</span>
+                        @if (!string.IsNullOrWhiteSpace(product.ImageUrl))
+                        {
+                            <img src="@product.ImageUrl" alt="@product.Name" />
+                        }
+                        else
+                        {
+                            <span>📦</span>
+                        }
                     </div>
 
                     <div class="shop-card-body">
