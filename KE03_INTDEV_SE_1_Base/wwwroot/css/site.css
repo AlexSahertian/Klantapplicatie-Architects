@@ -202,6 +202,19 @@ body {
     gap: 1rem;
 }
 
+    .shop-toolbar input,
+    .shop-toolbar select {
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0 14px;
+        background: white;
+    }
+
+    .shop-toolbar input {
+        flex: 1;
+    }
+
 .toolbar-chip {
     background: white;
     border: 1px solid var(--matrix-border);
@@ -384,6 +397,32 @@ body {
         box-shadow: 0 0 0 0.2rem rgba(0, 168, 107, 0.25);
         border-color: #00a86b;
     }
+
+.form-group {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+    .form-group label {
+        font-weight: 800;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 13px 14px;
+        outline: none;
+        width: 100%;
+    }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
 
 /* =========================
    BUTTONS

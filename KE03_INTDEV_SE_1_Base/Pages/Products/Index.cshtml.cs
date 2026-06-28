@@ -10,16 +10,29 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Products
     {
         private readonly IProductRepository _productRepository;
 
-        public List<Product> Products { get; set; } = new();
+        public List<Product> Products { get; set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
 
         public IndexModel(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             Products = _productRepository.GetAllProducts().ToList();
+
+            if (!string.IsNullOrWhiteSpace(SearchTerm))
+            {
+                Products = Products.Where(product =>
+                    product.Name.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)
+                    || product.Description.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)
+                )
+                .ToList();
+            }
+
+            return Page();
         }
 
         public IActionResult OnPost(int productId)
