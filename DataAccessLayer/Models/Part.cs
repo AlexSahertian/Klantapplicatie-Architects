@@ -8,6 +8,8 @@
 
         public string Description { get; set; }
 
-        public List<Product> Products { get; set; } = new();
+        public int Stock { get; set; }
+
+        public ICollection<Product> Products { get; } = new List<Product>();
     }
 }

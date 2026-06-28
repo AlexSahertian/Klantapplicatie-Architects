@@ -8,8 +8,8 @@
 
         public int CustomerId { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer Customer { get; set; } = null!;
 
-        public List<Product> Products { get; set; } = new();
+        public ICollection<Product> Products { get; } = new List<Product>();
     }
 }

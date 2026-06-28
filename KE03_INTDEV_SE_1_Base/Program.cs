@@ -12,103 +12,68 @@ namespace KE03_INTDEV_SE_1_Base
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // =========================
-            // DATABASE
-            // =========================
+            // Database
+            builder.Services.AddDbContext<MatrixIncDbContext>(options =>
+                options.UseSqlite("Data Source=MatrixInc.db"));
 
-            builder.Services.AddDbContext<MatrixIncDbContext>(
-                options => options.UseSqlite(
-                    "Data Source=MatrixInc.db"));
+            // Repositories
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IPartRepository, PartRepository>();
 
-            // =========================
-            // REPOSITORIES
-            // =========================
+            // Razor Pages
+            builder.Services.AddRazorPages();
 
-            builder.Services.AddScoped<ICustomerRepository,
-                CustomerRepository>();
-
-            builder.Services.AddScoped<IOrderRepository,
-                OrderRepository>();
-
-            builder.Services.AddScoped<IProductRepository,
-                ProductRepository>();
-
-            builder.Services.AddScoped<IPartRepository,
-                PartRepository>();
-
-            // =========================
-            // SESSION / WINKELWAGEN
-            // =========================
-
-            builder.Services.AddDistributedMemoryCache();
-
+            // Session
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout =
-                    TimeSpan.FromMinutes(30);
-
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
-
                 options.Cookie.IsEssential = true;
             });
 
-            // =========================
-            // RAZOR PAGES
-            // =========================
-
-            builder.Services.AddRazorPages();
-
             var app = builder.Build();
 
-            // =========================
-            // ERROR HANDLING
-            // =========================
-
+            // Error handling
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Error");
-
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
-            // =========================
-            // DATABASE INITIALIZE
-            // =========================
-
+            // Database aanmaken + seeden
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
-                var context =
-                    services.GetRequiredService<MatrixIncDbContext>();
+                try
+                {
+                    var context = services.GetRequiredService<MatrixIncDbContext>();
 
-                context.Database.EnsureCreated();
+                    // Voor schoolproject veiliger dan Migrate()
+                    context.Database.EnsureCreated();
 
-                MatrixIncDbInitializer.Initialize(context);
+                    MatrixIncDbInitializer.Initialize(context);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<MatrixIncDbContext>>();
+                    logger.LogError(ex, "Er is een fout opgetreden bij het aanmaken of vullen van de database.");
+                    throw;
+                }
             }
 
-            // =========================
-            // MIDDLEWARE
-            // =========================
+            app.MapRazorPages();
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            // BELANGRIJK:
-            // Session MOET vóór Authorization staan
-
             app.UseSession();
 
             app.UseAuthorization();
-
-            // =========================
-            // RAZOR PAGES
-            // =========================
-
-            app.MapRazorPages();
 
             app.Run();
         }

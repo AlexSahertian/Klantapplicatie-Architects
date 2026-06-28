@@ -10,7 +10,10 @@
 
         public decimal Price { get; set; }
 
-        public List<Order> Orders { get; set; } = new();
-        public List<Part> Parts { get; set; } // Add this property to fix CS1061
+        public string? ImageUrl { get; set; }
+
+        public ICollection<Order> Orders { get; } = new List<Order>();
+
+        public ICollection<Part> Parts { get; } = new List<Part>();
     }
 }
